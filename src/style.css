@@ -1,0 +1,259 @@
+:root {
+  font-family: 'Segoe UI', Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+  color: #0f172a;
+  background:
+    radial-gradient(circle at top left, rgba(56, 189, 248, 0.18), transparent 28%),
+    linear-gradient(180deg, #f8fbff 0%, #edf4fb 100%);
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#app {
+  min-height: 100%;
+}
+
+body {
+  margin: 0;
+}
+
+button,
+code {
+  font: inherit;
+}
+
+code {
+  padding: 2px 8px;
+  border-radius: 999px;
+  background: rgba(15, 23, 42, 0.08);
+  font-family: Consolas, 'Courier New', monospace;
+}
+
+#app {
+  min-height: 100vh;
+}
+
+.page-shell {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 40px 20px 56px;
+}
+
+.hero-card,
+.panel {
+  background: rgba(255, 255, 255, 0.9);
+  border: 1px solid rgba(148, 163, 184, 0.2);
+  border-radius: 24px;
+  box-shadow: 0 18px 50px rgba(15, 23, 42, 0.08);
+  backdrop-filter: blur(12px);
+}
+
+.hero-card {
+  display: grid;
+  grid-template-columns: minmax(0, 1.2fr) minmax(260px, 0.8fr);
+  gap: 24px;
+  padding: 32px;
+}
+
+.eyebrow,
+.panel-label {
+  margin: 0;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #0f766e;
+}
+
+h1 {
+  margin: 10px 0 16px;
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  line-height: 1.05;
+  letter-spacing: -0.04em;
+}
+
+h2 {
+  margin: 6px 0 0;
+  font-size: 1.3rem;
+}
+
+.hero-text {
+  margin: 0;
+  max-width: 60ch;
+  color: #334155;
+  line-height: 1.7;
+}
+
+.meta-grid {
+  display: grid;
+  gap: 16px;
+}
+
+.meta-card {
+  padding: 20px;
+  border-radius: 20px;
+  background: linear-gradient(135deg, #0f172a, #1e293b);
+  color: #e2e8f0;
+}
+
+.meta-card span {
+  display: block;
+  margin-bottom: 8px;
+  font-size: 0.85rem;
+  color: #94a3b8;
+}
+
+.meta-card strong {
+  word-break: break-word;
+}
+
+.panel-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 24px;
+  margin-top: 24px;
+}
+
+.panel {
+  padding: 28px;
+}
+
+.panel-head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 20px;
+}
+
+.state-badge,
+.http-code {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 36px;
+  padding: 0 14px;
+  border-radius: 999px;
+  font-size: 0.88rem;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.state-badge[data-state='idle'] {
+  background: #e2e8f0;
+  color: #334155;
+}
+
+.state-badge[data-state='loading'] {
+  background: #dbeafe;
+  color: #1d4ed8;
+}
+
+.state-badge[data-state='success'] {
+  background: #dcfce7;
+  color: #15803d;
+}
+
+.state-badge[data-state='error'] {
+  background: #fee2e2;
+  color: #b91c1c;
+}
+
+.http-code {
+  background: #ecfeff;
+  color: #155e75;
+}
+
+.tips-list {
+  margin: 0 0 24px;
+  padding-left: 20px;
+  color: #334155;
+  line-height: 1.7;
+}
+
+.tips-list li + li {
+  margin-top: 8px;
+}
+
+.primary-button {
+  border: 0;
+  border-radius: 999px;
+  padding: 14px 24px;
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #eff6ff;
+  background: linear-gradient(135deg, #0f766e, #0284c7);
+  cursor: pointer;
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease,
+    opacity 0.2s ease;
+  box-shadow: 0 18px 32px rgba(14, 116, 144, 0.24);
+}
+
+.primary-button:hover:enabled {
+  transform: translateY(-1px);
+  box-shadow: 0 20px 36px rgba(14, 116, 144, 0.32);
+}
+
+.primary-button:disabled {
+  cursor: wait;
+  opacity: 0.82;
+}
+
+.error-text {
+  margin: 0 0 16px;
+  color: #b91c1c;
+  line-height: 1.6;
+}
+
+.result-box {
+  min-height: 280px;
+  margin: 0;
+  padding: 20px;
+  overflow: auto;
+  border-radius: 20px;
+  background: #0f172a;
+  color: #dbeafe;
+  font-size: 0.92rem;
+  line-height: 1.6;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+@media (max-width: 920px) {
+  .hero-card,
+  .panel-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 640px) {
+  .page-shell {
+    padding: 24px 16px 40px;
+  }
+
+  .hero-card,
+  .panel {
+    padding: 20px;
+    border-radius: 20px;
+  }
+
+  .panel-head {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .primary-button {
+    width: 100%;
+  }
+}
