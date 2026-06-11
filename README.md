@@ -1,14 +1,14 @@
 # Material KG Manage Frontend
 
-基于 `Vue 3 + Vite + Vue Router + Pinia` 的管理端前端项目，已将 `before/mn` 下的旧 HTML 页面迁移为 Vue 视图，并保留 `/api` 到 `http://localhost:8000` 的开发代理。
+基于 `Vue 3 + Vite + Vue Router + Pinia` 的管理端前端项目，保留 `/api` 到 `http://localhost:8000` 的开发代理。
 
 ## 目录说明
 
-- `src/views/mn`：`manage`、`literature`、`template`、`project` 4 个页面
-- `src/components/mn`：侧边栏、弹窗和图标等公共组件
-- `src/stores/mn`：基于 Pinia 的页面状态与组件通讯
-- `src/services/mn`：后续可替换为真实接口的服务层
-- `src/mock/mn`：当前页面演示使用的 mock 数据
+- `src/views`：页面
+- `src/components`：侧边栏、弹窗和图标等公共组件
+- `src/stores`：基于 Pinia 的页面状态与组件通讯
+- `src/services`：后续可替换为真实接口的服务层
+- `src/mock`：当前页面演示使用的 mock 数据
 
 ## 运行方式
 
