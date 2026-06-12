@@ -6,6 +6,7 @@ import ProjectView from '@/views/mn/ProjectView.vue'
 import TemplateView from '@/views/mn/TemplateView.vue'
 
 // 知识图谱模块页面
+import KnowledgeGraphView from '@/views/kg/KnowledgeGraphView.vue'
 import GraphViewer from '@/views/kg/GraphViewer.vue'
 import TaskManager from '@/views/kg/TaskManager.vue'
 import KGTemplateManager from '@/views/kg/TemplateManager.vue'
@@ -37,7 +38,14 @@ const routes = [
     name: 'mn-project',
     component: ProjectView,
   },
-    // 知识图谱模块（路径前缀 /kg）
+    
+  // 知识图谱模块（路径前缀 /kg）
+  {
+    path: '/kg',
+    name: 'knowledge-graph',
+    component: KnowledgeGraphView,
+    meta: { title: '知识图谱' }
+  },
   {
     path: '/kg/graph',
     name: 'kg-graph',
