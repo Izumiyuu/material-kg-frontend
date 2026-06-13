@@ -12,6 +12,7 @@ import TaskManager from '@/views/kg/TaskManager.vue'
 import KGTemplateManager from '@/views/kg/TemplateManager.vue'
 import TripleSearch from '@/views/kg/TripleSearch.vue'
 import Statistics from '@/views/kg/Statistics.vue'
+import ChatView from '@/views/qa/ChatView.vue'
 
 const routes = [
   {
@@ -75,7 +76,15 @@ const routes = [
     name: 'kg-stats',
     component: Statistics,
     meta: { title: '统计信息' }
-  }
+  },
+
+  // 智能问答（module5）
+  {
+    path: '/qa/chat',
+    name: 'qa-chat',
+    component: ChatView,
+    meta: { title: '智能问答' },
+  },
 ]
 
 const router = createRouter({
