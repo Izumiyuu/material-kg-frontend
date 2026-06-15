@@ -5,6 +5,15 @@ import ManageView from '@/views/mn/ManageView.vue'
 import ProjectView from '@/views/mn/ProjectView.vue'
 import TemplateView from '@/views/mn/TemplateView.vue'
 
+// 知识图谱模块页面
+import KnowledgeGraphView from '@/views/kg/KnowledgeGraphView.vue'
+import GraphViewer from '@/views/kg/GraphViewer.vue'
+import TaskManager from '@/views/kg/TaskManager.vue'
+import KGTemplateManager from '@/views/kg/TemplateManager.vue'
+import TripleSearch from '@/views/kg/TripleSearch.vue'
+import Statistics from '@/views/kg/Statistics.vue'
+import ChatView from '@/views/qa/ChatView.vue'
+
 const routes = [
   {
     path: '/',
@@ -29,6 +38,52 @@ const routes = [
     path: '/mn/project',
     name: 'mn-project',
     component: ProjectView,
+  },
+    
+  // 知识图谱模块（路径前缀 /kg）
+  {
+    path: '/kg',
+    name: 'knowledge-graph',
+    component: KnowledgeGraphView,
+    meta: { title: '知识图谱' }
+  },
+  {
+    path: '/kg/graph',
+    name: 'kg-graph',
+    component: GraphViewer,
+    meta: { title: '图谱可视化' }
+  },
+  {
+    path: '/kg/tasks',
+    name: 'kg-tasks',
+    component: TaskManager,
+    meta: { title: '构建任务' }
+  },
+  {
+    path: '/kg/templates',
+    name: 'kg-templates',
+    component: KGTemplateManager,
+    meta: { title: '模板管理' }
+  },
+  {
+    path: '/kg/triples',
+    name: 'kg-triples',
+    component: TripleSearch,
+    meta: { title: '三元组检索' }
+  },
+  {
+    path: '/kg/stats',
+    name: 'kg-stats',
+    component: Statistics,
+    meta: { title: '统计信息' }
+  },
+
+  // 智能问答（module5）
+  {
+    path: '/qa/chat',
+    name: 'qa-chat',
+    component: ChatView,
+    meta: { title: '智能问答' },
   },
 ]
 

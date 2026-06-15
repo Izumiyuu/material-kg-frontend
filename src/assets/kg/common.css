@@ -1,0 +1,161 @@
+/* ==========================================
+   知识图谱模块 - 统一样式
+   解决：图谱区域高度坍塌、卡片/表格风格统一、间距规范
+   使用前请确保 html,body,#app 已设置 height:100%
+   ========================================== */
+
+/* 1. 全局高度修复（若项目中未全局设置，此处兜底） */
+html, body, #app {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+/* 2. 知识图谱模块所有页面的根容器布局方案 */
+.graph-viewer,
+.triple-search,
+.statistics,
+.task-manager,
+.template-manager {
+  height: 100%;           /* 继承 #app 高度 */
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 20px;
+  box-sizing: border-box;
+  overflow: auto;         /* 内容过多时滚动，避免溢出 */
+}
+
+/* 3. 图谱容器（GraphCanvas 的父级）自适应撑满 */
+.graph-container {
+  flex: 1;
+  min-height: 0;          /* flex 子项溢出修复 */
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+  overflow: hidden;
+  position: relative;
+}
+
+/* 确保 ECharts 画布占满容器 */
+.graph-container > * {
+  width: 100%;
+  height: 100%;
+}
+
+/* 4. 卡片样式：统一圆角、阴影、边框 */
+.el-card {
+  border-radius: 12px !important;
+  border: none !important;
+  box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.05) !important;
+  transition: box-shadow 0.2s;
+}
+
+.el-card:hover {
+  box-shadow: 0 4px 16px 0 rgba(0, 0, 0, 0.1) !important;
+}
+
+.el-card__header {
+  border-bottom: 1px solid #f0f0f0;
+  font-weight: 500;
+  background-color: #fafafa;
+  padding: 14px 20px;
+}
+
+/* 5. 表格样式：统一边框、行高、表头背景 */
+.el-table {
+  border-radius: 8px;
+  overflow: hidden;
+  font-size: 13px;
+}
+
+.el-table th.el-table__cell {
+  background-color: #f5f7fa !important;
+  color: #1f2d3d;
+  font-weight: 600;
+}
+
+.el-table--striped .el-table__row--striped td.el-table__cell {
+  background-color: #fafbfe;
+}
+
+/* 6. 表单样式：内联表单间距优化 */
+.el-form--inline .el-form-item {
+  margin-right: 16px;
+  margin-bottom: 12px;
+}
+
+/* 7. 按钮组间距 */
+.el-button + .el-button {
+  margin-left: 12px;
+}
+
+/* 8. 进度条样式优化（防止巨大对勾） */
+.el-progress__icon {
+  font-size: 14px !important;
+}
+.el-progress--circle .el-progress__text {
+  font-size: 12px !important;
+}
+
+/* 9. 统计卡片（Statistics 专用） */
+.stat-card {
+  text-align: center;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  border-radius: 16px;
+  padding: 4px 0;
+}
+.stat-value {
+  font-size: 48px;
+  font-weight: bold;
+  margin-bottom: 8px;
+}
+.stat-label {
+  font-size: 14px;
+  opacity: 0.9;
+  letter-spacing: 1px;
+}
+
+/* 10. 标签、描述列表等辅助样式 */
+.el-descriptions {
+  font-size: 14px;
+}
+.el-descriptions__label {
+  font-weight: 500;
+  background-color: #fafafa;
+}
+
+/* 11. 空状态提示居中优化 */
+.el-empty {
+  padding: 40px 0;
+}
+
+/* 12. 滚动条美化（可选） */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb {
+  background: #c1c1c1;
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #a8a8a8;
+}
+
+/* 13. 响应式：小屏幕时减小内边距 */
+@media (max-width: 768px) {
+  .graph-viewer,
+  .triple-search,
+  .statistics,
+  .task-manager,
+  .template-manager {
+    padding: 12px;
+    gap: 12px;
+  }
+}
