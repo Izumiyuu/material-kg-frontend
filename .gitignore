@@ -29,3 +29,5 @@ coverage
 .trae/
 .idea/
 before/
+backend_preview_requirement.md
+MANAGE_API_V2.md

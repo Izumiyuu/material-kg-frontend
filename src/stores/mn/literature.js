@@ -1,6 +1,6 @@
-import { defineStore } from 'pinia'
+﻿import { defineStore } from 'pinia'
 
-import { getLiteratureList } from '@/services/mn/literatureService'
+import { getLiteratureList, getLiteratureDetail, approveLiterature, rejectLiterature } from '@/services/mn/literatureService'
 
 export const useLiteratureStore = defineStore('mn-literature', {
   state: () => ({
@@ -31,17 +31,30 @@ export const useLiteratureStore = defineStore('mn-literature', {
     },
   },
   actions: {
-    async fetchLiterature() {
-      if (this.loaded) {
+    async fetchLiterature(force = false) {
+      if (this.loaded && !force) {
         return
       }
 
-      this.literature = await getLiteratureList()
+      const items = await getLiteratureList()
+      this.literature = items
       this.loaded = true
+    },
+
+    async fetchLiteratureDetail(document_id) {
+
+      const detail = await getLiteratureDetail(document_id)
+      return detail
     },
     openDetail(doc) {
       this.selectedDoc = doc
+
       this.showDetail = true
+      this.fetchLiteratureDetail(doc.id).then((detail) => {
+        this.selectedDoc.detail = detail
+      }).catch((err) => {
+        console.error('获取文献详情失败:', err)
+      })
     },
     closeDetail() {
       this.showDetail = false
@@ -52,15 +65,29 @@ export const useLiteratureStore = defineStore('mn-literature', {
     closeModal(name) {
       this.modals[name] = false
     },
-    startMockUpload() {
-      this.uploading = true
-      this.uploadPercent = 100
-      this.uploadStatus = '上传成功！正在解压并自动提取元数据...'
+    async approveLiterature(documentId) {
+      await approveLiterature(documentId)
+      // 找到对应文献并更新状态为已通过
+      const doc = this.literature.find(item => item.id === documentId)
+      if (doc) {
+        doc.status = 'approved'
+        doc.statusText = '已通过'
+        doc.statusClass = 'badge-completed'
+      }
+      this.showDetail = false
+
     },
-    finishMockUpload() {
-      this.uploading = false
-      this.uploadPercent = 0
-      this.closeModal('batchImport')
+    async rejectLiterature(documentId) {
+      await rejectLiterature(documentId)
+      // 找到对应文献并更新状态为已驳回
+      const doc = this.literature.find(item => item.id === documentId)
+      if (doc) {
+        doc.status = 'rejected'
+        doc.statusText = '已驳回'
+        doc.statusClass = 'badge-audit-rejected'
+      }
+      this.showDetail = false
+
     },
   },
 })

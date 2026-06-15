@@ -1,4 +1,4 @@
-import { createRouter, createWebHistory } from 'vue-router'
+﻿import { createRouter, createWebHistory } from 'vue-router'
 
 import LiteratureView from '@/views/mn/LiteratureView.vue'
 import ManageView from '@/views/mn/ManageView.vue'

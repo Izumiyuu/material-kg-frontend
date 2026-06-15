@@ -1,4 +1,4 @@
-<script setup>
+﻿<script setup>
 defineProps({
   show: {
     type: Boolean,
@@ -25,7 +25,7 @@ defineEmits(['close'])
           <div class="mn-modal-header">
             <h3 class="mn-modal-title">{{ title }}</h3>
             <button class="icon-button" type="button" @click="$emit('close')">
-              ✕
+              
             </button>
           </div>
           <slot />

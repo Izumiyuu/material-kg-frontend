@@ -1,4 +1,4 @@
-<script setup>
+﻿<script setup>
 import { onMounted } from 'vue'
 import { storeToRefs } from 'pinia'
 
